@@ -1,5 +1,6 @@
 pipeline {
     agent { docker { image 'python:3.7.2' } }
+    checkout scm
     stages {
         stage('build') {
             steps {
@@ -12,18 +13,8 @@ pipeline {
             }
         }
     }
-}
+
 post {
-    always {
-        echo 'ok,'
-    }
-    success {
-        echo 'How?'
-    }
-    failure {
-        echo 'Fair.'
-    }
-}post {
     always{
         echo 'ok,'
     }
@@ -35,4 +26,5 @@ post {
     always{
         echo 'Fair.'
     }
+}
 }
