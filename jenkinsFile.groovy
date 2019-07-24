@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3.7.2' } }
+    agent any
     stages {
         stage('build') {
             steps {
@@ -11,5 +11,18 @@ pipeline {
                 sh 'python3 app.py'
             }
         }
+    }
+}
+post {
+    always{
+        echo 'ok,'
+    }
+    
+    success{
+        echo 'How?'
+    }
+    
+    always{
+        echo 'Fair.'
     }
 }
