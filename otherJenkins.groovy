@@ -1,13 +1,14 @@
 node{
     docker.image('python:3.7.2')
     stage("checkout code"){
-        checkout scm
+        git 'https://github.com/jayjayb772/FlaskCoup.git'
     }
     stage("get requirements"){
-        sh "pip install -r requirements.txt"
+        sh "pip3 install -r requirements.txt"
     }
     stage("build"){
-        sh "python app.py"
+        sh "export FLASK_APP=app.py"
+        sh "python3 app.py &"
     }
 
 }
