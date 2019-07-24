@@ -24,7 +24,7 @@ def joinSubmit():
     player = request.form['Name']
     gameCode = request.form['GameCode']
     uniqueUserID = savePlayerToDB.saveToDB(player, gameCode)
-    return redirect(url_for('waitingRoom', name=player))
+    return redirect(url_for('waitingRoom', player=player))
     # TODO:
     # Save things to DB
     # pass game code and returned user ID to page
