@@ -14,6 +14,16 @@ pipeline {
     }
 }
 post {
+    always {
+        echo 'ok,'
+    }
+    success {
+        echo 'How?'
+    }
+    failure {
+        echo 'Fair.'
+    }
+}post {
     always{
         echo 'ok,'
     }
