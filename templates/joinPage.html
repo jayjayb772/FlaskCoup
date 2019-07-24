@@ -11,10 +11,18 @@
     <h1>Flask React</h1>
     <br>
     <div id="content"></div>
-    <form action="/join">
-        <input type="submit" value="Join a game">
-    </form>
 </div>
 <!-- scripts -->
+<div id="formDiv">
+    <form action="/joinSubmit", method="post">
+        Name:<br>
+        <input type="text" name="Name"><br>
+        Game Code:<br>
+        <input type="text" name="GameCode">
+        <input type="submit" value="Submit">
+    </form>
+
+
+</div>
 </body>
 </html>
