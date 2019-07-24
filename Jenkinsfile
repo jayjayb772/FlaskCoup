@@ -8,7 +8,7 @@ node{
     }
     stage("build"){
         sh "export FLASK_APP=app.py"
-        sh "flask run"
+        sh "flask run --host '0.0.0.0'"
     }
 
 }
