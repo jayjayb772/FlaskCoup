@@ -1,5 +1,18 @@
+from mysql import connector
+
+mydb = connector.connect(
+    host='192.168.0.137',
+    port='8457',
+    user='root',
+    passwd='pi',
+    database='myDB'
+)
 
 
 def saveToDB(player, gameCode):
-    # save to DB and get unique userID for game
-    return "1"
+    mycursor = mydb.cursor()
+    sql = "INSERT INTO t_players (name, gameCode) VALUES (%s, %s)"
+    val = (player, gameCode)
+    mycursor.execute(sql, val)
+    mydb.commit()
+    return mycursor.getlastrowid()
