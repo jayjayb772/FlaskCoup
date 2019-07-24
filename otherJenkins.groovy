@@ -7,7 +7,7 @@ node{
         sh "pip install -r requirements.txt"
     }
     stage("build"){
-        sh "python app.py"
+        sh "python app.py &"
     }
 
 }
