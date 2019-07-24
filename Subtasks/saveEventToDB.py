@@ -9,10 +9,13 @@ mydb = connector.connect(
 )
 
 
-def saveToDB(player, uuid, action, coins):
+def saveToDB(player, uuid, action, coins, gameCode):
     mycursor = mydb.cursor()
-    sql = "INSERT INTO t_events (player, uuid, action, coins) VALUES (%s, %s, %s, %d)"
-    val = (player, uuid, action, coins)
+    sql = "INSERT INTO t_events (player, uuid, action, coins, gamecode) VALUES (%s, %s, %s, %s, %s)"
+    val = (player, uuid, action, coins, gameCode)
     mycursor.execute(sql, val)
     mydb.commit()
-    return mycursor.fetchmany(5)
+    return mycursor.fetchmany(2)
+
+
+print(saveToDB('Jacob', '4','took three as Duke', 5, 12345))

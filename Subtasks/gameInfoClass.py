@@ -7,9 +7,8 @@ class GameInfo:
     numPlayers = 0
     activeDeck = []
     discardDeeck = []
-
-    def __init__(self):
-        return
+    def __init__(self, gameCode):
+        self.gameCode = gameCode
 
     def update(self):
         if self.numPlayers >= 3 or self.numPlayers <= 6:
