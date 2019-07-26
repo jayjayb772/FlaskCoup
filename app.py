@@ -1,17 +1,17 @@
 from flask import Flask, render_template, redirect, url_for, request
 from Subtasks import savePlayerToDB
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/')
+@application.route('/')
 def mainPage():
     return render_template('mainPage.html')
 
-@app.route('/join')
+@application.route('/join')
 def login():
     return render_template('joinPage.html')
 
-@app.route('/waitingRoom/<player>')
+@application.route('/waitingRoom/<player>')
 def waitingRoom(player):
     return 'welcome %s' % player
     # TODO:
@@ -19,7 +19,7 @@ def waitingRoom(player):
     # Shows how many players and how many of each card
     # Highlghts user on page
 
-@app.route('/joinSubmit', methods=['POST'])
+@application.route('/joinSubmit', methods=['POST'])
 def joinSubmit():
     player = request.form['Name']
     gameCode = request.form['GameCode']
@@ -29,6 +29,11 @@ def joinSubmit():
     # Save things to DB
     # pass game code and returned user ID to page
 
+@application.route('/playing/<player>')
+def inGame():
+    return
+
+
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
