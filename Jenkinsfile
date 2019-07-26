@@ -7,7 +7,7 @@ node{
         sh "pip3 install --user -r requirements.txt"
     }
     stage("build"){
-        sh "gunicorn wsgi:application'"
+        sh "gunicorn wsgi:application"
     }
 
 }
