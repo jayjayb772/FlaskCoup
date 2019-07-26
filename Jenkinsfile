@@ -4,7 +4,7 @@ node{
         git 'https://github.com/jayjayb772/FlaskCoup.git'
     }
     stage("get requirements"){
-        sh "pip3 install --user -r requirements.txt"
+        sh "pip3 install -r requirements.txt"
     }
     stage("build"){
         sh "flask run --host '0.0.0.0'"
