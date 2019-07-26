@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from Subtasks import savePlayerToDB
+from Subtasks import savePlayerToDB, saveEventToDB
 application = Flask(__name__)
 
 
@@ -23,7 +23,8 @@ def waitingRoom(player):
 def joinSubmit():
     player = request.form['Name']
     gameCode = request.form['GameCode']
-    uniqueUserID = savePlayerToDB.saveToDB(player, gameCode)
+    uuid = savePlayerToDB.saveToDB(player, gameCode)
+    print(saveEventToDB.saveToDB(player, uuid, 'joined the game', 2, gameCode))
     return redirect(url_for('waitingRoom', player=player))
     # TODO:
     # Save things to DB

@@ -1,18 +1,8 @@
-from mysql import connector
-
-mydb = connector.connect(
-    host='192.168.0.137',
-    port='8457',
-    user='root',
-    passwd='pi',
-    database='myDB'
-)
-
-
+from Subtasks.databaseController import mydb, mycursor
 def saveToDB(player, gameCode):
-    mycursor = mydb.cursor()
     sql = "INSERT INTO t_players (name, gameCode) VALUES (%s, %s)"
     val = (player, gameCode)
     mycursor.execute(sql, val)
     mydb.commit()
+    #mycursor.fetchall()
     return mycursor.getlastrowid()

@@ -7,6 +7,7 @@ node{
         sh "pip3 install -r requirements.txt"
     }
     stage("build"){
+        sh "FLASK_APP=wsgi.py"
         sh "flask run --host '0.0.0.0'"
     }
 
