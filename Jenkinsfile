@@ -7,8 +7,7 @@ node{
         sh "pip3 install -r requirements.txt"
     }
     stage("build"){
-        sh "export FLASK_APP=app.py"
-        sh "flask run --host '0.0.0.0'"
+        sh "gunicorn wsgi:application'"
     }
 
 }
