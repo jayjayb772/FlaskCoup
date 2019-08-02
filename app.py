@@ -1,11 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, request
-from Subtasks import savePlayerToDB, saveEventToDB
+from Subtasks import savePlayerToDB, saveEventToDB, databaseController
 application = Flask(__name__)
 
 
 @application.route('/')
 def mainPage():
     return render_template('mainPage.html')
+
 
 @application.route('/join')
 def login():
@@ -23,8 +24,10 @@ def waitingRoom(player):
 def joinSubmit():
     player = request.form['Name']
     gameCode = request.form['GameCode']
-    uuid = savePlayerToDB.saveToDB(player, gameCode)
-    print(saveEventToDB.saveToDB(player, uuid, 'joined the game', 2, gameCode))
+    savePlayerToDB.saveToDB(player, gameCode)
+    players =databaseController.getPlayers(gameCode)
+    saveEventToDB.saveToDB(player,'joined the game', 2, gameCode)
+    events = databaseController.getEvents()
     return redirect(url_for('waitingRoom', player=player))
     # TODO:
     # Save things to DB
