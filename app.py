@@ -1,24 +1,24 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify, json
 from Subtasks import savePlayerToDB, saveEventToDB, databaseController
 application = Flask(__name__)
 
 
-@application.route('/')
-def mainPage():
-    return render_template('mainPage.html')
-
-
-@application.route('/join')
-def login():
-    return render_template('joinPage.html')
-
-@application.route('/waitingRoom/<player>')
-def waitingRoom(player):
-    return 'welcome %s' % player
-    # TODO:
-    # Render page that will update when a new player is added
-    # Shows how many players and how many of each card
-    # Highlghts user on page
+# @application.route('/')
+# def mainPage():
+#     return render_template('mainPage.html')
+#
+#
+# @application.route('/join')
+# def login():
+#     return render_template('joinPage.html')
+#
+# @application.route('/waitingRoom/<player>')
+# def waitingRoom(player):
+#     return 'welcome %s' % player
+#     # TODO:
+#     # Render page that will update when a new player is added
+#     # Shows how many players and how many of each card
+#     # Highlghts user on page
 
 #
 # @application.route('/joinSubmit', methods=['POST'])
@@ -48,15 +48,19 @@ def joinSubmit():
     # Save things to DB
     # pass game code and returned user ID to page
 
-@application.route('/playing/<player>')
-def inGame():
-    return
-
 
 @application.route('/getPlayers', methods=['GET'])
 def getPlayersInGame():
     return Flask.response_class(status=201)
 
+#get events
+@application.route('/getEvents')#, methods=['GET'])
+def getEvents():
+    return Flask.response_class(response=json.dumps(databaseController.getEvents()), mimetype='application/json')
+
+#take action (player,gamecode,action)
+
+#submit callout orpass
 
 if __name__ == '__main__':
     application.run()

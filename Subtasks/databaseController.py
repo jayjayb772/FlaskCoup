@@ -1,3 +1,4 @@
+from flask import jsonify
 from mysql import connector
 
 mydb = connector.connect(
@@ -24,8 +25,10 @@ def getPlayers(gameCode):
 
 def getEvents():
     cursor = mydb.cursor(dictionary=True)
-    sql = "SELECT * FROM t_events ORDER BY id DESC;"
+    sql = "SELECT * FROM t_events ORDER BY id DESC LIMIT 5;"
     cursor.execute(sql)
     all = cursor.fetchall()
     cursor.close()
     return all
+
+print(getEvents())
