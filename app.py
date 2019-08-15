@@ -3,9 +3,9 @@ from Subtasks import savePlayerToDB, saveEventToDB, databaseController
 application = Flask(__name__)
 
 
-# @application.route('/')
-# def mainPage():
-#     return render_template('mainPage.html')
+@application.route('/', methods=['GET', 'POST'])
+def mainPage():
+    return Flask.response_class(status=201)
 #
 #
 # @application.route('/join')
