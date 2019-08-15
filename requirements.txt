@@ -8,4 +8,4 @@ mysql-connector==2.2.9
 pip==19.2.1
 setuptools==40.8.0
 xmlrunner==1.7.7
-gunicorn==19.9.0
+gunicorn==19.8.1
