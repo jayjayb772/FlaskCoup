@@ -39,7 +39,7 @@ def joinSubmit():
     print(data)
     player = data['name']
     gameCode = data['gamecode']
-    savePlayerToDB.saveToDB(player, gameCode)
+    savePlayerToDB.saveToDB(player, int(gameCode))
     players =databaseController.getPlayers(gameCode)
     saveEventToDB.saveToDB(player,'joined the game', 2, gameCode)
     events = databaseController.getEvents()

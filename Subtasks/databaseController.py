@@ -2,7 +2,7 @@ from flask import jsonify
 from mysql import connector
 
 mydb = connector.connect(
-    host='192.168.0.137',
+    host='192.168.0.165',
     port='8457',
     user='root',
     passwd='pi',
